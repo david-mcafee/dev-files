@@ -11,16 +11,11 @@ This is a stripped down version of a personal repo I use to store local config f
 After installing this repo locally, source your .bash_profile with the following:
 
 ```
-LOCAL_ROOT=~/workplace
-source /Volumes/workplace/notes/src/config/.bash_profile
+LOCAL_ROOT=~/[[your local root]] # Local root is used by multiple commands in the bash profile
+source /Volumes/workplace/notes/src/config/.bash_profile # or wherever you are sourcing this repo
 ```
 
-For personal computer, use:
-
-```
-LOCAL_ROOT=~/
-source /Users/elisa/notes/src/config/.bash_profile
-```
+This allows usage on multiple personal machines.
 
 ### How it works:
 
