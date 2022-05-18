@@ -1,2 +1,37 @@
-# dev-files
-Keep your bash profile, notes, and config backed up and version controlled with this template
+# Dev Files
+
+Keep your bash profile, notes, and config backed up and version controlled with this template!
+
+This is a stripped down version of a personal repo I use to store local config files, diagrams, notes, and scripts. I also use my own local ersion as a place to generally experiment with new packages, setup, config, etc.
+
+## Setup
+
+### Sourcing the bash profile
+
+After installing this repo locally, source your .bash_profile with the following:
+
+```
+LOCAL_ROOT=~/workplace
+source /Volumes/workplace/notes/src/config/.bash_profile
+```
+
+For personal computer, use:
+
+```
+LOCAL_ROOT=~/
+source /Users/elisa/notes/src/config/.bash_profile
+```
+
+### How it works:
+
+I like to use the same bash profile on all my devices. In order for directory-specific aliases to work, I set the local root on each machine. This is then referenced in the .bash_profile.
+
+## Other things I store that are not listed here:
+
+- Notes (see notes scripts / aliases in bash profile)
+- Google Chrome bookmarks
+- VS Code workspace config
+- Docs I'm writing
+- Drawio files
+- Interview templates
+- TODOs

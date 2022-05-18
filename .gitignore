@@ -1,0 +1,14 @@
+.DS_Store
+node_modules
+npm-debug.log
+coverage
+.nyc_output
+dist
+build
+.vscode
+.local-cache.json
+scratch
+*.iml
+apps/*.json
+.gitsecret/keys/random_seed
+!*.secret
