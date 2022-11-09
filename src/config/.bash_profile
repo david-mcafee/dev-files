@@ -6,7 +6,13 @@
 #-------------------------------------------------------------------------------
 # GLOBAL NPM PACKAGES (useful when switching Node versions)
 #-------------------------------------------------------------------------------
-alias installglobal="npm install --global yarn prettier @aws-amplify/cli verdaccio lighthouse pod speed-test"
+alias installglobalnocli="npm install --global yarn prettier verdaccio speed-test expo-cli typescript"
+alias installglobal="installglobalnocli && npm install --global @aws-amplify/cli"
+
+# First update Homebrew, then upgrade all packages:
+alias brewstuff="brew update && brew upgrade && brew cleanup"
+# TODO: check what's missing first:
+alias brewinstallall="brew install gh git-machete graphiql wget"
 
 # ------------------------------------------------------------------------------
 # PATH
@@ -63,16 +69,41 @@ cd $LOCAL_ROOT
 # ------------------------------------------------------------------------------
 
 # Regularly used commands
+  # Amplify
+  alias useinternalcli="npm uninstall -g @aws-amplify/cli && npm i -g @aws-amplify/cli-internal"
+  alias uselatestcli="npm uninstall -g @aws-amplify/cli-internal && npm i -g @aws-amplify/cli"
+  alias integ="yarn cypress:open:react"
+  alias samplerepo="cd /Users/mcafd/workplace/origin/amplify-js-samples-staging"
+  alias cra="yarn create react-app . --template typescript"
+
+  # Current directories
+  alias v2="cd ~/workplace/origin/amplify-js-samples-staging/samples/react/datastore/v2/"
+  alias cpkrn="cd ~/workplace/origin/amplify-js-samples-staging/samples/react-native/datastore/v2/customPkRnCli"
+  alias intern="cd ~/workplace/shaskhu/amplify-js-samples-staging/samples/react/datastore/v2/warehouse-management-system"
+  alias js="cd /Users/mcafd/workplace/origin/amplify-js"
+  alias ds="cd /Users/mcafd/workplace/origin/amplify-js/packages/datastore"
+
+  # Amplify build
   alias jslocalfirst="yarn && yarn build && yarn link-all && yarn build:esm:watch"
   alias jslocalpost="yarn clean && yarn build && yarn link-all && yarn build:esm:watch"
-  alias sample="rm -rf node_modules && yarn && yarn link aws-amplify && yarn link @aws-amplify/datastore && yarn start"
+  alias sample="rm -rf node_modules && yarn && yarn link @aws-amplify/core @aws-amplify/datastore @aws-amplify/auth @aws-amplify/api aws-amplify && yarn start"
+
+  # Yarn
   alias showlink="open ~/.config/yarn/link"
-  alias dstest="yarn run test --scope @aws-amplify/datastore"
-  alias sampleanalytics="rm -rf node_modules && yarn && yarn link aws-amplify && yarn link @aws-amplify/analytics && yarn start"
-  alias sampleall="rm -rf node_modules && yarn && yarn link aws-amplify && yarn link @aws-amplify/analytics && yarn link @aws-amplify/api && yarn link @aws-amplify/api-graphql && yarn link @aws-amplify/api-rest && yarn link @aws-amplify/auth && yarn link @aws-amplify/cache && yarn link @aws-amplify/core && yarn link @aws-amplify/datastore && yarn link @aws-amplify/geo && yarn link @aws-amplify/interactions && yarn link @aws-amplify/predictions && yarn link @aws-amplify/pubsub && yarn link @aws-amplify/storage && yarn link @aws-amplify/ui && yarn link @aws-amplify/ui-components && yarn link @aws-amplify/ui-react & yarn link @aws-amplify/ui-react-v1 && yarn link @aws-amplify/xr && yarn start"
   alias unlinkds="yarn unlink aws-amplify && yarn unlink @aws-amplify/datastore"
   alias linkrn="cp -r $LOCAL_ROOT/amplify-js/packages/datastore/lib-esm $LOCAL_ROOT/samples-origin/amplify-js-samples-staging/samples/react-native/datastore/v2/custom-pk/node_modules/@aws-amplify/datastore/"
+
+  # Run local tests
+
+  # Misc
+  alias dstest="yarn run test --scope @aws-amplify/datastore"
+  alias sampleanalytics="rm -rf node_modules && yarn && yarn link aws-amplify && yarn link @aws-amplify/analytics && yarn start"
+  alias sampleall="rm -rf node_modules && yarn && yarn link aws-amplify && yarn link @aws-amplify/api-graphql && @aws-amplify/api-rest && yarn link @aws-amplify/api && yarn link @aws-amplify/analytics && yarn link @aws-amplify/api && yarn link @aws-amplify/api-graphql && yarn link @aws-amplify/api-rest && yarn link @aws-amplify/auth && yarn link @aws-amplify/cache && yarn link @aws-amplify/core && yarn link @aws-amplify/datastore && yarn link @aws-amplify/geo && yarn link @aws-amplify/interactions && yarn link @aws-amplify/predictions && yarn link @aws-amplify/pubsub && yarn link @aws-amplify/storage && yarn link @aws-amplify/ui && yarn link @aws-amplify/ui-components && yarn link @aws-amplify/ui-react & yarn link @aws-amplify/ui-react-v1 && yarn link @aws-amplify/xr && yarn start"
   alias pullremoteCPK="git pull upstream ds-custom-pk"
+  alias sanity="cd /Users/mcafd/workplace/origin/amplify-js/packages/datastore && yarn test"
+  alias test="yarn test"
+  alias notes="cd /Users/mcafd/workplace/notes"
+  alias setnode="nvm alias default"
 
 #---------------------------------
 # AMPLIFY
@@ -138,7 +169,7 @@ cd $LOCAL_ROOT
   alias google="/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --disable-web-security --user-data-dir --ignore-certificate-errors &> /dev/null &"
 
 # Directories:
-  alias hh="cd ~/"
+  alias hh="cd ~/workplace/"
 
 # Cloud desktop
   alias nds="ninja-dev-sync"
@@ -163,11 +194,14 @@ cd $LOCAL_ROOT
 
 # Misc.
 alias restart="exec bash -l"
-alias goodmorning="cd $LOCAL_ROOT && kinit -f && mwinit -o ; toolbox update & npm update -g & brew update && brew upgrade"
+alias goodmorning="npm update -g && brewstuff"
+alias goodmorningvpn="cd $LOCAL_ROOT && kinit -f && mwinit -o && toolbox update && goodmorning"
 # TODO: alias openall="code && open /Applications/Amazon\ Chime.app /Applications/Slack.app /Applications/Google\ Chrome.app --args 'http://github.com'"
 alias env="npx envinfo --system --binaries --browsers --npmPackages --npmGlobalPackages --duplicates"
 # TODO: alias closeall="$LOCAL_ROOT/notes/src/scripts/close.sh"
 alias v="verdaccio"
+alias brewdump="brew bundle dump"
+alias brewinstall="brew bundle install"
 
 # ------------------------------------------------------------------------------
 # git notes
